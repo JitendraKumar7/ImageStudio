@@ -1,0 +1,109 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+repositories {
+    maven { url "https://dl.bintray.com/dasar/maven" }
+    maven { url "https://s3.amazonaws.com/repo.commonsware.com" }
+    maven { url "https://jitpack.io" }
+    mavenCentral()
+}
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'imagestudio'
+            keyPassword 'imagestudio'
+            storeFile file('E:/Jitendra_Kumar/AndroidStudioProjects/ImageStudio/key/imagestudio.jks')
+            storePassword 'imagestudio'
+        }
+    }
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.imagestudio"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+        signingConfig signingConfigs.config
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+    buildToolsVersion '27.0.3'
+    productFlavors {
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //exifInterface
+    implementation 'com.android.support:exifinterface:27.1.1'
+    // google & support
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:palette-v7:27.1.1'
+    implementation 'com.android.support:customtabs:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    //exo-player
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.6.0'
+    implementation 'com.google.android.exoplayer:exoplayer-hls:2.6.0'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.6.0'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.6.0'
+    implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.6.0'
+    // utils
+    implementation 'com.orhanobut:hawk:2.0.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.commonsware.cwac:provider:0.4.3'
+    implementation 'com.github.Commit451:bypasses:1.1.0'
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    implementation 'com.drewnoakes:metadata-extractor:2.11.0'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.12'
+    // annotationProcessor utils
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    // rxJava
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    //it is recommended to keep the same version of rxAndroid
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.13'
+    //implementation 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
+    // icons
+    implementation 'com.mikepenz:iconics-core:3.0.3@aar'
+    implementation 'com.mikepenz:iconics-views:3.0.3@aar'
+    implementation 'com.mikepenz:fontawesome-typeface:4.7.0.2@aar'
+    implementation 'com.mikepenz:community-material-typeface:2.0.46.1@aar'
+    implementation 'com.mikepenz:google-material-typeface:3.0.1.2.original@aar'
+    // ui
+    implementation 'uz.shift:colorpicker:0.5@aar'
+    implementation 'com.github.yalantis:ucrop:2.2.2'
+    implementation 'com.github.HoraApps:Liz:-SNAPSHOT'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.github.lzyzsd:circleprogress:1.2.1'
+    implementation 'jp.wasabeef:recyclerview-animators:2.2.7'
+    implementation 'com.github.jetradarmobile:desertplaceholder:1.1.1'
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
+    // debug Only
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'cat.ereza:customactivityoncrash:2.2.0'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    // TODO check them out
+    implementation 'de.psdev.licensesdialog:licensesdialog:1.8.3'
+    implementation 'com.turingtechnologies.materialscrollbar:lib:10.0.3'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
